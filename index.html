@@ -36,6 +36,21 @@
         ).then(
           data => {
             console.log(data);
+            // Guardamos el contenedor tbody
+            let tbody = document.getElementById("tBod");
+            // Este sera el contenido de la tabla
+            let contTBody = "";
+            data.forEach(element => {
+              contTBody += (`
+                <tr>
+                  <td>${element.name}</td>
+                  <td>
+                    <button>Ver</button>
+                  </td>
+                </tr>
+              `)
+            });
+            tbody.innerHTML=contTBody;
           }
         )
       }
