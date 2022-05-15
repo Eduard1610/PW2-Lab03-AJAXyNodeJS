@@ -12,7 +12,7 @@
     <input type="text" id="namePage">
     <br><br>
     <textarea id="textArea"  rows="10" cols="50">Ingrese su contenido Markdown</textarea>
-    <button id="newPage">Crear pagina</button>
+    <button id="newPage" onclick="createPage()">Crear pagina</button>
 
     <table>
       <!-- Encabezado de la tabla-->
@@ -53,6 +53,17 @@
             tbody.innerHTML=contTBody;
           }
         )
+      }
+      function createPage(){
+        let contenidoTextArea = document.getElementById("textArea").value;
+        let contenidoNamePage = document.getElementById("namePage").value;
+        const url = 'http://localhost:3000/pages';
+
+        const data = {
+          name: contenidoNamePage,
+          content: contenidoTextArea
+        }
+        console.log(data);
       }
     </script>
 
