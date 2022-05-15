@@ -2,6 +2,18 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+//Almacen de páginas
+const pages = [
+    {
+        name: 'Pagina1',
+        content: 'Cont1'
+    },
+    {
+        name: 'Pagina2',
+        content: 'Cont2'
+    }
+];
+
 app.listen(3000, () => {
     console.log("Escuchando en: http://localhost:3000")
 
@@ -13,7 +25,5 @@ app.get('/', (request, response) => {
 
 //RUTAS
 app.get('/pages', (request, response) => {
-    response.json({
-        pages: ['prueba1','prueba2']
-    });
+    response.json(pages);
 });
