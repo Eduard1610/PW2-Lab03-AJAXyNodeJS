@@ -19,9 +19,9 @@ app.listen(3000, () => {
 
 });
 
-app.get('/', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'index.html'));
-});
+// INTERMEDIARIOS
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //RUTAS
 app.get('/pages', (request, response) => {
@@ -29,7 +29,15 @@ app.get('/pages', (request, response) => {
 });
 
 app.post('/pages', (request, response) => {
-    console.log(request.body);
-    console.log('hola');
-    response.send('Datos Recibidos');
+    let { name } = request.body
+    let { content } = request.body
+    pages.push({
+        name: name,
+        content: content
+    })
+    response.json('Bien Creado')
 });
+
+app.get('/', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'index.html'));
+})
