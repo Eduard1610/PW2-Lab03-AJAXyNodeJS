@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Paginas Markdown</title>
+  </head>
+  <body>
+    <h1>AJAX y NodeJS</h1>
+    <button id="getPages" onclick="getPages()">Obtener paginas</button>
+    <hr>
+    <p>Nombre de la pagina</p>
+    <input type="text" id="namePage">
+    <br><br>
+    <textarea id="textArea"  rows="10" cols="50">Ingrese su contenido Markdown</textarea>
+    <button id="newPage">Crear pagina</button>
+
+    <table>
+      <!-- Encabezado de la tabla-->
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Accion</th>
+              <th>Contenido</th>
+          </tr>
+      </thead>
+        <!-- Cuerpo de la tabla-->
+      <tbody id="tBod">
+
+      </tbody>
+    </table>
+    <script>
+      function getPages(){
+        const url = 'http://localhost:3000/pages';
+        fetch(url).then(
+          response => response.json()
+        ).then(
+          data => {
+            console.log(data);
+          }
+        )
+      }
+    </script>
+
+</body>
+</html>
