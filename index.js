@@ -27,3 +27,9 @@ app.get('/', (request, response) => {
 app.get('/pages', (request, response) => {
     response.json(pages);
 });
+
+app.post('/pages', (request, response) => {
+    console.log(request.body);
+    console.log('hola');
+    response.send('Datos Recibidos');
+});
