@@ -27,12 +27,17 @@ app.get('/pages', (request, response) => {
     response.json(pages); //Respondo con mi arreglo
 });
 
-//id : 3
+//Para mostrar el contenido
+app.get('/content' , (request , response) =>{
+    response.json(pages);
+});
+
 
 //Para enviar algo desde el navegador al servidor utilizo peticion post
 app.post('/pages' , (request , response) => {
     console.log(request.body); //Se imprime en el "server" (terminal)
-    const {title, content} = request.body;//Destructurizacion
+    const {title, content} = request.body;//Destructurizacion   
+    console.log(title);
     pages.push({
         id : (pages.length + 1),
         name:title,

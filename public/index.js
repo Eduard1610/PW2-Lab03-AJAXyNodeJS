@@ -67,10 +67,36 @@ function  llenarTabla (registros) {
     });
     tBody.innerHTML = contTBody;
 
+
+
+
+    
+
     const botones = document.querySelectorAll(".contenido");
-    //Id : 4
+    
+    botones.forEach( boton => {
+        
+        boton.addEventListener("click" , function(e){
+           // console.log(e.target);
+            fetch("http://localhost:3000/content")
+            .then(response => response.json())
+            .then (data => {
+                mostrarContenido(data, e.target.attributes["id"].value);
+            }) 
+        })
+    });
+
 }
 
-//Id 5
+function mostrarContenido(registros , id) { 
+    console.log(registros);
+    registros.forEach( registro =>{
+        if(registro.id ==  id){
+            document.getElementById("titulo").innerHTML = registro.name;
+            document.getElementById("contenido").innerHTML = registro.content;
+            return;
+        }
+    })
+}
 
 
