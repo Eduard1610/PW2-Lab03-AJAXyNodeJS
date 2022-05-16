@@ -1,6 +1,8 @@
 const path = require('path'); //Para unir directoriaos independientemente del SO
 const express = require('express');
 const app = express();
+const { marked } = requiere('marked');
+
 
 //Mi almacen de paginas que ire creando
 const pages = [
@@ -37,11 +39,13 @@ app.get('/content' , (request , response) =>{
 app.post('/pages' , (request , response) => {
     console.log(request.body); //Se imprime en el "server" (terminal)
     const {title, content} = request.body;//Destructurizacion   
-    //console.log(title);
+    let miTit = marked.parse(title);
+	let miCont = marked.parse(content);
+    //console.log(miCont);
     pages.push({
         id : (pages.length + 1),
-        name:title,
-        content: content
+        name: miTit,
+        content: miCont
     })
     response.json("Creado Exitosamente");//Se envia al cliente
 })
