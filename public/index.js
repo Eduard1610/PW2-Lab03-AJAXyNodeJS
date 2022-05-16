@@ -90,8 +90,7 @@ function mostrarContenido(registros , id) {
     console.log(registros);
     registros.forEach( registro =>{
         if(registro.id ==  id){
-            document.getElementById("titulo").innerHTML = registro.name;
-            document.getElementById("contenido").innerHTML = registro.content;
+            document.getElementById("content-page").innerHTML = registro.name + registro.content;
             return;
         }
     })
