@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX y NodeJS - BORRADOR</h1>
+        <button id="getPages">Obtener paginas</button>
+        <hr>
+        <p>Nombre de la pagina</p>
+        <input type="text" id="namePage">
+        <br><br>
+        <textarea id="contentPage"  rows="10" cols="50" placeholder="Ingrese su contenido Markdown"></textarea>
+        <button id="newPage">Crear pagina</button>
+
+        <table>
+            <!-- Encabezado de la tabla-->
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Contenido</th>
+                    </tr>
+                </thead>
+                <!-- Cuerpo de la tabla-->
+                <tbody id="tBod">
+                    
+                </tbody>
+        </table>
+
+        <hr>
+        <div class="content-page">
+            <h3>Contenido Pagina</h3>
+            <h2 id = "titulo"></h2>
+            <p id = "contenido"></p>
+        </div>
+
+        <script src="index.js"></script>
+</body>
+</html>
