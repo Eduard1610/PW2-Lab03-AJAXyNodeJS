@@ -1,4 +1,3 @@
-
 const url = "http://localhost:3000/pages";
 const getPageBtn = document.querySelector("#getPages");
 const createPageBtn = document.querySelector("#newPage");
@@ -68,32 +67,18 @@ function  llenarTabla (registros) {
     tBody.innerHTML = contTBody;
 
 
-
-
-    
-
-    const botones = document.querySelectorAll(".contenido");
-    
-    botones.forEach( boton => {
-        
-        boton.addEventListener("click" , function(e){
-           // console.log(e.target);
-            fetch("http://localhost:3000/content")
-            .then(response => response.json())
-            .then (data => {
-                mostrarContenido(data, e.target.attributes["id"].value);
-            }) 
-        })
-    });
-
 }
 
+
+
+
 function mostrarContenido(registros , id) { 
+   
     console.log(registros);
     registros.forEach( registro =>{
         if(registro.id ==  id){
-            document.getElementById("titulo").innerHTML = registro.name;
-            document.getElementById("contenido").innerHTML = registro.content;
+            document.getElementById("content-page").innerHTML = registro.name + registro.content;
+
             return;
         }
     })
