@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Paginas Markdown</title>
+  </head>
+  <body>
+    <h1>AJAX y NodeJS</h1>
+    <button id="getPages" onclick="getPages()">Obtener paginas</button>
+    <hr>
+    <p>Nombre de la pagina</p>
+    <input type="text" id="namePage">
+    <br><br>
+    <textarea id="textArea"  rows="10" cols="50">Ingrese su contenido Markdown</textarea>
+    <button id="newPage" onclick="createPage()">Crear pagina</button>
+    <table>
+      <!-- Encabezado de la tabla-->
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Accion</th>
+              <th>Contenido</th>
+          </tr>
+      </thead>
+        <!-- Cuerpo de la tabla-->
+      <tbody id="tBod">
+
+      </tbody>
+    </table>
+
+    <script>
+      function getPages(){
+        const url = 'http://localhost:3000/pages';
+        fetch(url).then(
+          response => response.json()
+        ).then(
+          data => {
+            console.log(data);
+            // Guardamos el contenedor tbody
+            let tbody = document.getElementById("tBod");
+            // Este sera el contenido de la tabla
+            let contTBody = "";
+            data.forEach(element => {
+              contTBody += (`
+                <tr>
+                  <td>${element.name}</td>
+                  <td>
+                    <button>Ver</button>
+                  </td>
+                </tr>
+              `)
+            });
+            tbody.innerHTML=contTBody;
+          }
+        )
+      }
+      function createPage(){
+        let contenidoTextArea = document.getElementById("textArea").value;
+        let contenidoNamePage = document.getElementById("namePage").value;
+        const url = 'http://localhost:3000/pages';
+
+        const data = {
+          name: contenidoNamePage,
+          content: contenidoTextArea
+        }
+        console.log(data);
+        const request = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        };
+        fetch(url,request).then((response) => {
+          console.log('entro');
+        })
+      }
+    </script>
+</body>
+</html>
