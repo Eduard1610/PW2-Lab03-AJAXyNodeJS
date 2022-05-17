@@ -66,15 +66,13 @@ function  llenarTabla (registros) {
     });
     tBody.innerHTML = contTBody;
 
-
-}
-
-const botones = document.querySelectorAll(".contenido");
-
-botones.forEach( boton => {
-    boton.addEventListener("click" , function(e){
-        // console.log(e.target);
-        fetch("http://localhost:3000/content")
+    const botones = document.querySelectorAll(".contenido");
+    
+    botones.forEach( boton => {
+        
+        boton.addEventListener("click" , function(e){
+           // console.log(e.target);
+            fetch("http://localhost:3000/content")
             .then(response => response.json())
             .then (data => {
                 mostrarContenido(data, e.target.attributes["id"].value);
@@ -82,6 +80,7 @@ botones.forEach( boton => {
         })
     });
 
+}
 
 function mostrarContenido(registros , id) { 
    
@@ -89,10 +88,7 @@ function mostrarContenido(registros , id) {
     registros.forEach( registro =>{
         if(registro.id ==  id){
             document.getElementById("content-page").innerHTML = registro.name + registro.content;
-
             return;
         }
     })
 }
-
-
