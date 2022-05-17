@@ -19,13 +19,16 @@ app.listen(3000, () => {
 
 });
 
+
 // INTERMEDIARIOS
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+
 //RUTAS
 app.get('/pages', (request, response) => {
     response.json(pages);
+
 });
 
 app.post('/pages', (request, response) => {
@@ -41,3 +44,4 @@ app.post('/pages', (request, response) => {
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'index.html'));
 })
+

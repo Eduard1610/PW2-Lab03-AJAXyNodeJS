@@ -13,7 +13,6 @@
     <br><br>
     <textarea id="textArea"  rows="10" cols="50">Ingrese su contenido Markdown</textarea>
     <button id="newPage" onclick="createPage()">Crear pagina</button>
-
     <table>
       <!-- Encabezado de la tabla-->
       <thead>
@@ -28,6 +27,7 @@
 
       </tbody>
     </table>
+
     <script>
       function getPages(){
         const url = 'http://localhost:3000/pages';
@@ -76,6 +76,5 @@
         })
       }
     </script>
-
 </body>
 </html>
