@@ -69,7 +69,18 @@ function  llenarTabla (registros) {
 
 }
 
+const botones = document.querySelectorAll(".contenido");
 
+botones.forEach( boton => {
+    boton.addEventListener("click" , function(e){
+        // console.log(e.target);
+        fetch("http://localhost:3000/content")
+            .then(response => response.json())
+            .then (data => {
+                mostrarContenido(data, e.target.attributes["id"].value);
+            }) 
+        })
+    });
 
 
 function mostrarContenido(registros , id) { 
